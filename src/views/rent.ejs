@@ -1,0 +1,85 @@
+<%- include('partials/_header'); %>
+
+<%- include('partials/_navbar'); %>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1 class="mt-3">Rent</h1>
+      <form action="/rent" method="post">
+        <!-- <div class="form-group">
+          <select class="col-sm-5" id="floatingSelect" name="numberPlateRent">
+            <option class="form-control mt-3" selected>Numero Placa</option>
+            <% for(var i=0; i < car.length; i++) {if (car[i].state ===
+            true) { %>
+            <option value="<%= car[i].placa %>"><%= car[i].plateNumber %></option>
+            <% }} %>
+          </select>
+        </div> -->
+        <div class="form-group">
+          <div class="col-sm-5">
+            <select class="form-select mt-3" name="numberPlateRent">
+              <option value="" hidden>Numero Placa</option>
+              <% for(var i=0; i < car.length; i++) {if (car[i].state === true) { %>
+                <option value="<%= car[i].plateNumber %>"><%= car[i].plateNumber %></option>
+              <% }} %>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-5">
+            <input class="form-control mt-3" type="text" name="brandRent" placeholder="Marca">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-5">
+            <input class="form-control mt-3" type="text" name="numberRent" placeholder="Numero Renta">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-5">
+            <input class="form-control mt-3" type="date" name="dateRent" placeholder="Fecha">
+          </div>  
+        </div>
+        <button class="btn btn-primary mt-3" type="submit">Guardar</button>
+        <a class="btn btn-primary mt-3" href="/index">Ir a Inicio</a>
+      </form>
+      <br>
+      <% if(errorMessage) { %>
+        <p class="mt-3 text-dark" style="font-weight: bold;"><%= errorMessage %></p>
+      <% } %>
+      <br>
+    </div>
+    <div class="col">
+      <div class="col-md-15 text-center">
+        <div class="container mt-3">
+          <h2 class="h2">Table Rents</h2>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Numero Placa</th>
+                <th scope="col">Marca</th>
+                <th scope="col">Numero Renta</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for(var i=0; i < rent.length; i++) { %>
+              <tr>
+                <td><%= rent[i].plateNumber %></td>
+                <td><%= rent[i].brand %></td>
+                <td><%= rent[i].numberRent %></td>
+                <td><%= rent[i].rentDate %></td>
+                <td><%= rent[i].state %></td>
+              </tr>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<%- include('partials/_footer'); %>
