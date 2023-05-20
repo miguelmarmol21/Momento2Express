@@ -1,5 +1,5 @@
 module.exports = {
     mongodb: {
-        URI:'mongodb://localhost:27017/dbRentCar'
+        URI:'mongodb://127.0.0.1:27017/dbRentCar'
     }
 }
